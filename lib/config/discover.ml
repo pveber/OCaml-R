@@ -2,7 +2,9 @@ module C = Configurator.V1
 module S = String
 
 let trim_to_list str =
-  S.split_on_char ' ' (S.trim str)
+  match S.trim str with
+  | "" -> []
+  | str -> S.split_on_char ' ' str
 
 let cfig c =
   let default: C.Pkg_config.package_conf = {
